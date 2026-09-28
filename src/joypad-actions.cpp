@@ -639,11 +639,7 @@ void JoypadActionEngine::Execute(const JoypadBinding &binding)
 		if (!obs_frontend_recording_active()) {
 			break;
 		}
-		if (obs_frontend_recording_paused()) {
-			obs_frontend_recording_unpause();
-		} else {
-			obs_frontend_recording_pause();
-		}
+		obs_frontend_recording_pause(!obs_frontend_recording_paused());
 		break;
 	case JoypadActionType::ToggleVirtualCam:
 		if (obs_frontend_virtualcam_active()) {
